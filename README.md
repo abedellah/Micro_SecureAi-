@@ -132,5 +132,11 @@ trivy image --severity HIGH,CRITICAL frontend-ui:latest
 
 ---
 
+## Contributors
+
+Team end-of-studies project, built jointly by:
+
+- **Yassir Nmar** ([@ChiefYasser](https://github.com/ChiefYasser)) — project owner
+- **Mohamed Abdellah Lagrini** — contributed across the stack (backend, frontend, and DevSecOps/infrastructure)
+
 *SecureAI MicroShield — End-of-Studies Project, 2026*
-*Yassir Nmar*

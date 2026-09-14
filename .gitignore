@@ -1,10 +1,28 @@
 # Secrets
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
 
 # Python
 __pycache__/
 *.py[cod]
 venv/
+.venv/
+*.egg-info/
+
+# Build/debug artifacts
+*.log
+backend/build.log
+backend/build_utf8.log
 
 # Docker/K8s local state
 .minikube/
+
+# Editor/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
