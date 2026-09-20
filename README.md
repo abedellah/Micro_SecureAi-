@@ -1,3 +1,5 @@
+<img width="996" height="1280" alt="WhatsApp Image 2026-06-23 at 11 47 47" src="https://github.com/user-attachments/assets/43302906-8552-4980-80cf-3e145ab9bb37" />
+
 # SecureAI MicroShield
 
 An AI-powered cybersecurity microservices platform deployed on Kubernetes. The system detects anomalous API traffic patterns using Isolation Forest machine learning models and surfaces automated alerts through a real-time Security Operations Center (SOC) dashboard.
