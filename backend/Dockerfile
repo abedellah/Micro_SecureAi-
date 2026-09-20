@@ -20,6 +20,11 @@ WORKDIR /app
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
+# pip is only needed at build time. Removing it also drops the copies of msgpack
+# and setuptools that pip vendors internally, which Trivy flags and which cannot
+# be patched from here.
+RUN python -m pip uninstall -y pip
+
 COPY . /app/
 
 RUN dos2unix /app/entrypoint.sh && chmod +x /app/entrypoint.sh
