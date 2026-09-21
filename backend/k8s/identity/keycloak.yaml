@@ -73,6 +73,12 @@ spec:
           value: "true"
         ports:
         - containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /auth/health/started
+            port: 8080
+          periodSeconds: 10
+          failureThreshold: 30
         livenessProbe:
           httpGet:
             path: /auth/health/live

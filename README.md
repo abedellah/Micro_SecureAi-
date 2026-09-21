@@ -55,12 +55,18 @@ docker build -t frontend-ui:latest ./frontend
 ### 3. Deploy to Kubernetes
 
 ```bash
+# Create the Secret the manifests read (choose your own values)
+kubectl create secret generic backend-secrets   --from-literal=DB_PASSWORD=<choose>   --from-literal=REDIS_URL=redis://redis:6379/0   --from-literal=KEYCLOAK_ADMIN_PASSWORD=<choose>   --from-literal=GRAFANA_ADMIN_PASSWORD=<choose>
+
 # Apply all manifests in dependency order
-kubectl apply -f k8s/database/
-kubectl apply -f k8s/identity/
-kubectl apply -f k8s/apps/
-kubectl apply -f k8s/monitoring/
-kubectl apply -f k8s/base/
+kubectl apply -f backend/k8s/database/
+kubectl apply -f backend/k8s/identity/
+kubectl apply -f backend/k8s/apps/
+kubectl apply -f backend/k8s/monitoring/   # kubectl skips soc-dashboard.json (not a Kubernetes object): expected
+kubectl apply -f backend/k8s/base/
+
+# Keycloak needs a few minutes to start on a small cluster
+kubectl rollout status deploy/keycloak --timeout=600s
 
 # Expose the cluster via Ingress (Windows)
 minikube tunnel
